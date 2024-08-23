@@ -1,0 +1,9 @@
+SELECT user_id,
+       birth_date,
+       sex
+FROM   users
+WHERE  sex = 'male'
+   and birth_date > (SELECT max(birth_date)
+                  FROM   users
+                  WHERE  sex = 'female')
+GROUP BY user_id
